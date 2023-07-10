@@ -25,8 +25,8 @@ A GPT tool to analize PDF documents
 #### Endpoits
 
 - POST -> Token
-- POST -> PDF file
 - POST -> Chat
+- POST -> PDF file
 - POST -> Message
 - GET -> Chats
 - GET -> Messages
