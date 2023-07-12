@@ -9,7 +9,6 @@ users = [
     }
 ]
 
-
 chats = [
     {
         "id": "76d2e3293c-2bfc-4fc7-bf12-49f07c877b997",
@@ -25,9 +24,8 @@ pdf_files = [
         "chatId": "76d2e3293c-2bfc-4fc7-bf12-49f07c877b997",
         "timestamp": "2023-07-05T10:30:00Z",
         "url": "url.com/test",
-    },
+    }
 ]
-
 
 messages = [
     {
@@ -36,5 +34,5 @@ messages = [
         "content": "Olá, como você está?",
         "timestamp": "2023-07-05T10:30:00Z",
         "sender": "1235678910-2bfc-4fc7-bf12-49f07c877b997",
-    },
+    }
 ]

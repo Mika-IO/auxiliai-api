@@ -22,15 +22,22 @@ A GPT tool to analize PDF documents
   uvicorn src.main:app --reload
 ```
 
+#### AWS Resources
+
+- Lambda
+- S3
+- DynamoDB
+- JWT
+
 #### Endpoits
 
-- POST -> Token
+- POST -> SignUp
+- POST -> SignIn
 - POST -> Chat
-- POST -> PDF file
 - POST -> Message
 - GET -> Chats
 - GET -> Messages
-- DELETE -> Chats
+- DELETE -> Chat
 
 #### Models
 
