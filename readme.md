@@ -2,6 +2,12 @@
 
 A GPT tool to analize PDF documents
 
+#### TODO
+
+- Subir arquivo pro bucket
+- No service create-message integrar com open AI
+- Melhorar a solucao de permissoes
+
 #### Getting Started
 
 ```shell
@@ -17,9 +23,9 @@ A GPT tool to analize PDF documents
 
   pip install -r requirements.txt
 
-  # Run the API with Uvicorn:
+  # Run the API locally:
 
-  uvicorn src.main:app --reload
+  chalice local
 ```
 
 #### AWS Resources
@@ -28,6 +34,17 @@ A GPT tool to analize PDF documents
 - S3
 - DynamoDB
 - JWT
+
+```shell
+  # Init infra:
+  terraform init
+
+  # Create infra:
+  terraform apply
+
+  # Destroy infra:
+  terraform destroy
+```
 
 #### Endpoits
 
@@ -47,9 +64,8 @@ ACCOUNT USERS
 {
   "id": "1235678910-2bfc-4fc7-bf12-49f07c877b997",
   "email": "mikaiodev@gmail.com",
-  "username": "Mikaio",
   "role": "admin",
-  "administrator_id": "1235678910-2bfc-4fc7-bf12-49f07c877b997",
+  "admin_id": "1235678910-2bfc-4fc7-bf12-49f07c877b997",
   "hashed_password": "hashed_password"
 }
 ```
@@ -65,25 +81,16 @@ CHAT
 }
 ```
 
-PDF FILES
-
-```json
-{
-  "id": "d2e3293c-2bfc-4fc7-bf12-49f07c877b22",
-  "chatId": "76d2e3293c-2bfc-4fc7-bf12-49f07c877b997",
-  "timestamp": "2023-07-05T10:30:00Z",
-  "url": "url.com/test"
-}
-```
-
 MESSAGE
 
 ```json
 {
   "id": "d2e3293c-2bfc-4fc7-bf12-49f07c877b91",
   "chatId": "76d2e3293c-2bfc-4fc7-bf12-49f07c877b997",
+  "owner_id": "1235678910-2bfc-4fc7-bf12-49f07c877b997",
+  "sender": "user",
   "content": "Olá, como você está?",
-  "timestamp": "2023-07-05T10:30:00Z",
-  "sender": "1235678910-2bfc-4fc7-bf12-49f07c877b997"
+  "file_url": "",
+  "timestamp": "2023-07-05T10:30:00Z"
 }
 ```
