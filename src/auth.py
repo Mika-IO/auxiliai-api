@@ -15,7 +15,7 @@ auth = Blueprint(__name__)
 # - POST -> SignUp
 
 
-@auth.route("/signup", methods=["POST"])
+@auth.route("/signup", methods=["POST"], cors=True)
 def create_user():
     body = auth.current_request.json_body
 
@@ -56,7 +56,7 @@ def create_user():
 # - POST -> SignIn
 
 
-@auth.route("/signin", methods=["POST"])
+@auth.route("/signin", methods=["POST"], cors=True)
 def create_token():
     body = auth.current_request.json_body
 

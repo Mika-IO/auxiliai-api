@@ -13,7 +13,7 @@ from datetime import datetime
 messages = Blueprint(__name__)
 
 
-@messages.route("/message", methods=["POST"])
+@messages.route("/message", methods=["POST"], cors=True)
 def create_message():
     token = messages.current_request.headers.get("Authorization", "")
     is_valid, message = verify_jwt_token(token)
@@ -51,7 +51,7 @@ def create_message():
     return {"message": message_data}
 
 
-@messages.route("/messages/{email}/{chat_id}")
+@messages.route("/messages/{email}/{chat_id}", cors=True)
 def get_messages(email, chat_id):
     token = messages.current_request.headers.get("Authorization", "")
     is_valid, message = verify_jwt_token(token, token_email=email)

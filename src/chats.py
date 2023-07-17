@@ -11,7 +11,7 @@ from datetime import datetime
 chats = Blueprint(__name__)
 
 
-@chats.route("/chat", methods=["POST"])
+@chats.route("/chat", methods=["POST"], cors=True)
 def create_chat():
     token = chats.current_request.headers.get("Authorization", "")
     is_valid, message = verify_jwt_token(token)
@@ -35,7 +35,7 @@ def create_chat():
     return {"chat": chat_data}
 
 
-@chats.route("/chats/{email}")
+@chats.route("/chats/{email}", cors=True)
 def get_chats(email):
     token = chats.current_request.headers.get("Authorization", "")
     is_valid, message = verify_jwt_token(token, email)
@@ -54,7 +54,7 @@ def get_chats(email):
     )
 
 
-@chats.route("/chat/{chat_id}", methods=["DELETE"])
+@chats.route("/chat/{chat_id}", methods=["DELETE"], cors=True)
 def delete_chat_handler(chat_id):
     token = chats.current_request.headers.get("Authorization", "")
     is_valid, message = verify_jwt_token(token)
