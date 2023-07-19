@@ -32,7 +32,7 @@ def create_chat():
         "name": body["name"],
     }
     insert_chat(chat_data)
-    return {"chat": chat_data}
+    return response("", {"chat": chat_data})
 
 
 @chats.route("/chats/{email}", cors=True)
