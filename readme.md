@@ -2,10 +2,37 @@
 
 A GPT tool to analize PDF documents
 
-#### TODO
+### TODO
 
-- Subir arquivo pro bucket
+<!-- features -->
+
+- Reponse do bot quando uma mensagem é criada... integrar com open ai
+- Ordenar chats e messages
+
+- Login
+- Signup
+
+- Logout
+
+- Payment
+- Search chats
+
+<!-- visuais -->
+
+- Diferenciar mensagem do usuário de mensagem do bot
+- Manter as mensagens sempre no bottom da pagina
+
+<!-- logica -->
+
+- Identificar quando a api está fora do ar
+- Quando existe 1 só chat,devo pode apaga-lo
+
+### TODO API
+
 - No service create-message integrar com open AI
+  - PDF to text
+  - prompt
+- Ambientes STG e PROD
 - Melhorar a solucao de permissoes
 
 #### Getting Started

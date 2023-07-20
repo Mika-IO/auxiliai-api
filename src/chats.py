@@ -1,5 +1,5 @@
 from chalice import Blueprint
-from src.utils.security import verify_jwt_token, get_email_from_token
+from src.utils.security import verify_jwt_token
 
 from src.utils.api_utils import is_body_valid, response
 

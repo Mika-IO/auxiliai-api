@@ -4,6 +4,8 @@ from src.utils.security import verify_jwt_token, get_email_from_token
 from src.utils.api_utils import is_body_valid, response
 
 from src.dao.message import insert_message, get_messages_by_chat
+from src.dao.chat import update_chat_name
+from src.utils.bucket import send_file, generate_presigned_url
 
 from src.dao.chat import get_chat
 import uuid
@@ -22,6 +24,7 @@ def create_message():
 
     required_fields = ["chat_id", "sender", "content"]
     body = messages.current_request.json_body
+
     is_valid, message = is_body_valid(body, required_fields)
 
     if not is_valid:
@@ -36,16 +39,30 @@ def create_message():
     if chat["owner"] != get_email_from_token(token):
         return response("Unauthorized", {}, status_code=404)
 
-    # Crie a mensagem com os dados fornecidos
+    message_id = str(uuid.uuid4())
     message_data = {
-        "id": str(uuid.uuid4()),
+        "id": message_id,
         "chatId": chat_id,
         "owner": chat["owner"],
         "sender": body["sender"],
-        "content": body["content"],
+        "content": body["content"],  # mensagem ou nome do arquivo
         "file_url": body.get("file_url", ""),
         "timestamp": datetime.now().isoformat(),
     }
+    if "file" in body:
+        bucket_name = "files-auxiliai"
+        file_format = "pdf"
+        file_data = body["file"]
+        file_path = f"message/{message_id}/doc.{file_format}"
+        try:
+            send_file(file_format, file_data, file_path)
+            file_url = generate_presigned_url(bucket_name, file_path)
+            message_data["file_url"] = file_url
+            # atualizar o nome do chatId
+            update_chat_name(chat_id, body["content"])
+        except Exception as e:
+            return response("Error uploading file", {}, status_code=500)
+
     insert_message(message_data)
 
     return {"message": message_data}

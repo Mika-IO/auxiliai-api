@@ -1,2 +1,5 @@
 AWS_REGION = "us-east-2"
 JWT_SECRET = "your_secret_key"
+BUCKET_NAME = "files-auxiliai"
+AWS_ACESS_KEY_ID = "AKIARAW75ALRXRHM7XCF"
+AWS_SECRET_ACESS_KEY = "Q4QRGJ8FoqY1SKhrVcanGMkwHZSH/cAPLAfiEbeo"

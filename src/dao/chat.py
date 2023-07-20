@@ -28,3 +28,14 @@ def delete_chat(chat_id):
     table = dynamodb.Table(table_name)
     table.delete_item(Key={"id": chat_id})
     return True
+
+
+def update_chat_name(chat_id, new_name):
+    table = dynamodb.Table(table_name)
+    response = table.update_item(
+        Key={"id": chat_id},
+        UpdateExpression="SET #n = :val",
+        ExpressionAttributeNames={"#n": "name"},
+        ExpressionAttributeValues={":val": new_name},
+    )
+    return True
