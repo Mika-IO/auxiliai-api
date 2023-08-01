@@ -6,9 +6,6 @@ A GPT tool to analize PDF documents
 
 <!-- features -->
 
-- Reponse do bot quando uma mensagem é criada... integrar com open ai
-- Ordenar chats e messages
-
 - Login
 - Signup
 

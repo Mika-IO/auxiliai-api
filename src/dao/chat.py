@@ -39,3 +39,14 @@ def update_chat_name(chat_id, new_name):
         ExpressionAttributeValues={":val": new_name},
     )
     return True
+
+
+def update_chat_file_text(chat_id, file_text):
+    table = dynamodb.Table(table_name)
+    response = table.update_item(
+        Key={"id": chat_id},
+        UpdateExpression="SET #n = :val",
+        ExpressionAttributeNames={"#n": "file_text"},
+        ExpressionAttributeValues={":val": file_text},
+    )
+    return True

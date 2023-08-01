@@ -43,7 +43,7 @@ def get_chats(email):
         return response(message, {}, status_code=401)
 
     chats_list = get_chats_by_owner(email)
-
+    sorted_messages_data = sorted(chats_list, key=lambda x: x["timestamp"])
     return response(
         "success",
         {
